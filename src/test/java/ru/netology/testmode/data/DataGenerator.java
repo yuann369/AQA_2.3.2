@@ -6,7 +6,6 @@ import io.restassured.filter.log.LogDetail;
 import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 import lombok.Value;
-import lombok.val;
 
 import java.util.Locale;
 
@@ -26,7 +25,7 @@ public class DataGenerator {
     }
 
     private static void sendRequest(RegistrationDto user) {
-        given() // "дано"
+        given()
                 .spec(requestSpec)
                 .body(user)
                 .when()
@@ -34,9 +33,6 @@ public class DataGenerator {
                 .then()
                 .statusCode(200);
     }
-        // TODO: отправить запрос на указанный в требованиях path, передав в body запроса объект user
-        //  и не забудьте передать подготовленную спецификацию requestSpec.
-        //  Пример реализации метода показан в условии к задаче.
 
     public static String getRandomLogin() {
         String login = faker.name().username();
@@ -53,7 +49,7 @@ public class DataGenerator {
         }
 
         public static RegistrationDto getUser(String status) {
-            RegistrationDto user = new RegistrationDto(getRandomLogin(), getRandomPassword(),status);
+            RegistrationDto user = new RegistrationDto(getRandomLogin(), getRandomPassword(), status);
             return user;
         }
 
